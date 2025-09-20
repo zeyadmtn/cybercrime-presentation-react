@@ -1,15 +1,83 @@
-import bg from '/bg.png'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import Page1View from './Page1View';
+import bg from '/bg.png';
+import { data } from './data';
+import Page2View from './Page2View';
 
-function App() {
+const Home = () => {
+  const navigate = useNavigate();
+
+  const goToNextPage = (item) => {
+    navigate('/overview', { state: item });
+  };
 
   return (
-    <main className="min-h-screen w-auto bg-cover bg-center flex flex-col items-center justify-center" style={{ backgroundImage: `url(${bg})` }}>
-      <div className='flex flex-row justify-between px-10  mb-auto h-fit  w-full items-center py-5'>
-        <img src="/logo1.png" alt="" className='h-auto w-full max-w-[35vw]' />
-        <img src="/logo2.png" alt="" className='h-auto w-full max-w-[35vw]' />
+    <main className="min-h-screen text-white w-auto bg-cover bg-center  px-10 py-6 flex flex-col items-center mb-16" style={{ backgroundImage: `url(${bg})` }}>
+      <div className="flex justify-between w-full items-center mb-20">
+        <img src="/logo1.png" alt="Logo 1" className="h-auto w-full max-w-[20vw]" />
+        <img src="/logo2.png" alt="Logo 2" className="h-auto w-full max-w-[20vw]" />
+      </div>
+      <div className='flex flex-col items-center justify-center text-center w-full'>
+        <h1 className='text-4xl'>Pillars of Work:</h1>
+        <div className='flex flex-col gap-20 my-10 w-full'>
+          {data.map((section) =>
+            <div className='flex flex-col gap-2 items-center justify-center w-full '>
+              <h1 className='text-4xl mb-5'>{section.title}</h1>
+              <div className='grid grid-cols-4 justify-between gap-10 px-16 w-full'>
+                {section.items.map((item) =>
+                  <div className='flex flex-col gap-5 items-center group justify-center text-center cursor-pointer text-2xl'>
+                    <p className='group-hover:scale-125 transition-all duration-300 ease-in-out'>
+                      {item.title}
+                    </p>
+                    <div
+                      onClick={() => goToNextPage(item)}
+                      className='w-full h-full max-w-[5vw] group-hover:scale-125 transition-all duration-300 ease-in-out'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 48 48" id="a" fill="#009EDB" stroke="#009EDB">
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="4.608">
+                          <defs>
+                            <style>
+                              {`.f{fill:none;stroke:#009EDB;stroke-linecap:round;stroke-linejoin:round;}`}
+                            </style>
+                          </defs>
+                          <circle id="b" className="f" cx="24" cy="24" r="8.5" />
+                          <circle id="c" className="f" cx="24" cy="24" r="11.8" />
+                          <circle id="d" className="f" cx="24" cy="24" r="18.25" />
+                          <circle id="e" className="f" cx="24" cy="24" r="21.5" />
+                        </g>
+                        <g id="SVGRepo_iconCarrier">
+                          <defs>
+                            <style>
+                              {`.f{fill:none;stroke:#009EDB;stroke-linecap:round;stroke-linejoin:round;}`}
+                            </style>
+                          </defs>
+                          <circle id="b" className="f" cx="24" cy="24" r="8.5" />
+                          <circle id="c" className="f" cx="24" cy="24" r="11.8" />
+                          <circle id="d" className="f" cx="24" cy="24" r="18.25" />
+                          <circle id="e" className="f" cx="24" cy="24" r="21.5" />
+                        </g>
+                      </svg>
+                    </div>
+                  </div>)}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </main>
   )
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/overview" element={<Page1View />} />
+        <Route path="/strategy" element={<Page2View />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App
