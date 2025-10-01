@@ -99,10 +99,6 @@ export const data = [
             "Training Delivery Techniques",
             "Mentoring & Reporting"
           ]
-        },
-        page2Data: {
-          title: "Training of Trainers Strategy",
-          imgUrl: "./graph1.png"
         }
       }
     ]
@@ -118,10 +114,6 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
-        },
-        page2Data: {
-          title: "Center Team",
-          imgUrl: "./graph1.png"
         }
       },
       {
@@ -132,10 +124,6 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
-        },
-        page2Data: {
-          title: "History of the Center",
-          imgUrl: "./graph1.png"
         }
       },
       {
@@ -146,10 +134,6 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
-        },
-        page2Data: {
-          title: "Summary of 2025",
-          imgUrl: "./graph1.png"
         }
       },
       {
@@ -160,10 +144,6 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
-        },
-        page2Data: {
-          title: "Mission & Vision",
-          imgUrl: "./graph1.png"
         }
       },
       {
@@ -174,10 +154,6 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
-        },
-        page2Data: {
-          title: "ULTRA Platform",
-          imgUrl: "./graph1.png"
         }
       },
       {
@@ -244,10 +220,6 @@ export const data = [
               vidUrl: "./vid1.mp4"
             }
           ]
-        },
-        page2Data: {
-          title: "Participants Testimonials",
-          imgUrl: "./graph1.png"
         }
       },
       {
@@ -258,10 +230,6 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
-        },
-        page2Data: {
-          title: "Contact Information",
-          imgUrl: "./graph1.png"
         }
       }
     ]

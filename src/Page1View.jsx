@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import bg from '/bg.png';
 
 function Page1View() {
@@ -9,12 +9,17 @@ function Page1View() {
     const navigate = useNavigate();
     const contentRef = useRef(null);
 
+    const [selectedTestimonial, setSelectedTestimonial] = useState(null);
+
     const goToNextPage = (item) => {
         navigate('/strategy', { state: item });
     };
 
     useEffect(() => {
         const handleClickOutside = (event) => {
+            // Don't trigger if modal is open
+            if (selectedTestimonial) return;
+
             if (contentRef.current && !contentRef.current.contains(event.target)) {
                 navigate(-1);
             }
@@ -24,13 +29,13 @@ function Page1View() {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [navigate]);
+    }, [navigate, selectedTestimonial]);
 
     if (!data) return <div>No data found</div>;
 
     return (
         <main
-            className="min-h-screen text-white bg-cover bg-center px-10 py-6"
+            className="relative min-h-screen text-white bg-cover bg-center px-10 py-6"
             style={{ backgroundImage: `url(${bg})` }}
         >
             {/* Header */}
@@ -50,11 +55,13 @@ function Page1View() {
 
                 {data.hasVideoSliders ? (
                     // 🌟 Testimonial Cards View
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5
+                    ">
                         {data.listItems.map((testimonial, index) => (
                             <div
                                 key={index}
-                                className="bg-white bg-opacity-10 rounded-lg shadow-lg p-4 text-white"
+                                onClick={() => setSelectedTestimonial(testimonial)}
+                                className="bg-white bg-opacity-10 rounded-lg shadow-lg p-4 text-white cursor-pointer hover:bg-opacity-20 transition"
                             >
                                 <video
                                     src={testimonial.vidUrl}
@@ -65,9 +72,7 @@ function Page1View() {
                                     playsInline
                                     loop
                                 />
-                                <p className="font-semibold text-lg">
-                                    {testimonial.zeyadCountry}
-                                </p>
+                                <p className="font-semibold text-lg">{testimonial.zeyadCountry}</p>
                                 <p className="text-sm">
                                     <strong>Course:</strong> {testimonial.title}
                                 </p>
@@ -108,7 +113,7 @@ function Page1View() {
                                 </div>
                             )}
 
-                            {data.btnText && (
+                            {item?.page2Data && data.btnText && (
                                 <div
                                     onClick={() => goToNextPage(item)}
                                     className="flex items-center text-center gap-4 mt-auto group cursor-pointer"
@@ -125,6 +130,43 @@ function Page1View() {
                     </div>
                 )}
             </div>
+
+            {/* 🔲 Modal Overlay */}
+            {selectedTestimonial && (
+                <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex flex-col justify-center items-center text-center px-8">
+                    <div className="max-w-4xl w-full">
+                        <video
+                            src={selectedTestimonial.vidUrl}
+                            controls={false}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full max-h-[60vh] mb-8 rounded-lg shadow-xl"
+                        />
+                        <div className="text-left text-white space-y-2 mb-10">
+                            <p className="text-xl font-semibold">{selectedTestimonial.zeyadCountry}</p>
+                            <p className="text-lg">
+                                <strong>Course:</strong> {selectedTestimonial.title}
+                            </p>
+                            <p className="text-lg">
+                                <strong>Date:</strong> {selectedTestimonial.date}
+                            </p>
+                        </div>
+
+                        {/* Return Button */}
+                        <div
+                            onClick={() => setSelectedTestimonial(null)}
+                            className="flex items-center justify-center gap-4 cursor-pointer hover:opacity-80 transition"
+                        >
+                            <span className="text-2xl font-bold">Return to Testimonials</span>
+                            <svg fill="#ffffff" version="1.1" viewBox="0 0 512 512" stroke="#ffffff" className="w-8 h-8">
+                                <polygon points="512,261.5 298.7,90.8 298.7,218.8 0,218.8 0,304.2 298.7,304.2 298.7,432.2 "></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            )}
         </main>
     );
 }
