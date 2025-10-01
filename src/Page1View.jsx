@@ -17,7 +17,7 @@ function Page1View() {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            // Don't trigger if modal is open
+            // Don't trigger navigate if modal is open
             if (selectedTestimonial) return;
 
             if (contentRef.current && !contentRef.current.contains(event.target)) {
@@ -53,10 +53,9 @@ function Page1View() {
                 {/* Title */}
                 <h1 className="text-5xl font-semibold text-center mb-10">{data.title}</h1>
 
+                {/* Testimonial View */}
                 {data.hasVideoSliders ? (
-                    // 🌟 Testimonial Cards View
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5
-                    ">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
                         {data.listItems.map((testimonial, index) => (
                             <div
                                 key={index}
@@ -83,10 +82,10 @@ function Page1View() {
                         ))}
                     </div>
                 ) : (
-                    // ✨ Default View
-                    <div className="flex flex-row gap-x-6 h-[60dvh] items-start">
+                    // Default View
+                    <div className={`flex flex-row gap-x-6 h-[60dvh] items-start ${!data.longDescription ? 'justify-center' : ''}`}>
                         {/* Left Video Column */}
-                        <div className="w-[65%] flex flex-col h-full gap-8 items-start">
+                        <div className={`${!data.longDescription ? 'w-[80%]' : 'w-[65%]'} flex flex-col h-full gap-8 items-start`}>
                             <video
                                 src={data.videoUrl}
                                 controls={false}
@@ -94,44 +93,47 @@ function Page1View() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full rounded-lg shadow-lg object-contain"
+                                className={`rounded-lg shadow-lg object-contain ${!data.longDescription ? 'w-full h-[70vh]' : 'w-full'}`}
                             />
                         </div>
 
                         {/* Right Content Column */}
-                        <div className="w-[35%] h-full flex flex-col gap-8 justify-between">
-                            <p className="text-xl leading-relaxed">{data.longDescription}</p>
+                        {data.longDescription && (
+                            <div className="w-[35%] h-full flex flex-col gap-8 justify-between">
+                                <p className="text-xl leading-relaxed">{data.longDescription}</p>
 
-                            {data.listItems?.length > 0 && (
-                                <div className="w-full">
-                                    <h2 className="text-2xl font-semibold mb-4">{data.listTitle}</h2>
-                                    <ul className="text-lg grid-cols-2 grid w-full space-y-1 list-disc list-inside">
-                                        {data.listItems.map((item, index) => (
-                                            <li className="col-span-1" key={index}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-
-                            {item?.page2Data && data.btnText && (
-                                <div
-                                    onClick={() => goToNextPage(item)}
-                                    className="flex items-center text-center gap-4 mt-auto group cursor-pointer"
-                                >
-                                    <span className="text-3xl font-bold">{data.btnText}</span>
-                                    <div className="w-full h-full max-w-[4vw] group-hover:scale-125 transition-all duration-300 ease-in-out">
-                                        <svg fill="#ffffff" version="1.1" viewBox="0 0 512 512" stroke="#ffffff">
-                                            <polygon points="512,261.5 298.7,90.8 298.7,218.8 0,218.8 0,304.2 298.7,304.2 298.7,432.2 "></polygon>
-                                        </svg>
+                                {data.listItems?.length > 0 && (
+                                    <div className="w-full">
+                                        <h2 className="text-2xl font-semibold mb-4">{data.listTitle}</h2>
+                                        <ul className="text-lg grid-cols-2 grid w-full space-y-1 list-disc list-inside">
+                                            {data.listItems.map((item, index) => (
+                                                <li className="col-span-1" key={index}>{item}</li>
+                                            ))}
+                                        </ul>
                                     </div>
-                                </div>
-                            )}
-                        </div>
+                                )}
+
+                                {/* Button only if page2Data exists */}
+                                {item?.page2Data && data.btnText && (
+                                    <div
+                                        onClick={() => goToNextPage(item)}
+                                        className="flex items-center text-center gap-4 mt-auto group cursor-pointer"
+                                    >
+                                        <span className="text-3xl font-bold">{data.btnText}</span>
+                                        <div className="w-full h-full max-w-[4vw] group-hover:scale-125 transition-all duration-300 ease-in-out">
+                                            <svg fill="#ffffff" version="1.1" viewBox="0 0 512 512" stroke="#ffffff">
+                                                <polygon points="512,261.5 298.7,90.8 298.7,218.8 0,218.8 0,304.2 298.7,304.2 298.7,432.2 "></polygon>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
 
-            {/* 🔲 Modal Overlay */}
+            {/* Modal Overlay */}
             {selectedTestimonial && (
                 <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex flex-col justify-center items-center text-center px-8">
                     <div className="max-w-4xl w-full">
@@ -154,7 +156,7 @@ function Page1View() {
                             </p>
                         </div>
 
-                        {/* Return Button */}
+                        {/* Close Modal Button */}
                         <div
                             onClick={() => setSelectedTestimonial(null)}
                             className="flex items-center justify-center gap-4 cursor-pointer hover:opacity-80 transition"

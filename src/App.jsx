@@ -23,9 +23,9 @@ const Home = () => {
           {data.map((section) =>
             <div className='flex flex-col gap-2 items-center justify-center w-full '>
               <h1 className='text-4xl mb-5'>{section.title}</h1>
-              <div className='grid grid-cols-4 justify-between gap-10 px-16 w-full'>
+              <div className='grid grid-cols-4 justify-between gap-10 px-16 w-full items-center'>
                 {section.items.map((item) =>
-                  <div className='flex flex-col gap-5 items-center group justify-center text-center cursor-pointer text-2xl'>
+                  <div className='flex flex-col gap-5 items-center group justify-center text-center cursor-pointer text-2xl my-auto h-full '>
                     <p className='group-hover:scale-125 transition-all duration-300 ease-in-out'>
                       {item.title}
                     </p>
