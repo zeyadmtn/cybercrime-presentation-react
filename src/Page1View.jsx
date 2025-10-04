@@ -35,7 +35,7 @@ function Page1View() {
 
     return (
         <main
-            className="relative min-h-screen text-white bg-cover bg-center px-10 py-6"
+            className="relative h-full text-white bg-cover bg-center px-10 py-6"
             style={{ backgroundImage: `url(${bg})` }}
         >
             {/* Header */}
@@ -48,10 +48,10 @@ function Page1View() {
             <div
                 id="content"
                 ref={contentRef}
-                className="flex flex-col max-w-[85dvw] mx-auto h-full"
+                className="flex flex-col max-w-[98dvw] mx-auto h-auto"
             >
                 {/* Title */}
-                <h1 className="text-5xl font-semibold text-center mb-10">{data.title}</h1>
+                <h1 className="font-semibold text-center mb-10">{data.title}</h1>
 
                 {/* Testimonial View */}
                 {data.hasVideoSliders ? (
@@ -64,26 +64,26 @@ function Page1View() {
                             >
                                 <video
                                     src={testimonial.vidUrl}
-                                    className="w-full h-52 object-cover rounded-md mb-4"
+                                    className="w-full h-[20dvh] object-cover rounded-md mb-4"
                                     muted
                                     autoPlay
                                     controls={false}
                                     playsInline
                                     loop
                                 />
-                                <p className="font-semibold text-lg">{testimonial.zeyadCountry}</p>
+                                <p className="font-semibold">{testimonial.zeyadCountry}</p>
                                 {
-                                    testimonial.title && <p className="text-sm"><strong>Course:</strong> {testimonial.title}</p>
+                                    testimonial.title && <p className=""><strong>Course:</strong> {testimonial.title}</p>
                                 }
                                 {
-                                    testimonial.date && <p className="text-sm"><strong>Date:</strong> {testimonial.date}</p>
+                                    testimonial.date && <p className=""><strong>Date:</strong> {testimonial.date}</p>
                                 }
                             </div>
                         ))}
                     </div>
                 ) : (
                     // Default View
-                    <div className={`flex flex-row gap-x-6 h-[60dvh] items-start ${!data.longDescription ? 'justify-center' : ''}`}>
+                    <div className={`flex flex-row gap-x-6 h-fit  mt-28 my-auto items-start ${!data.longDescription ? 'justify-center' : ''}`}>
                         {/* Left Video Column */}
                         <div className={`${!data.longDescription ? 'w-[80%]' : 'w-[65%]'} flex flex-col h-full gap-8 items-start`}>
                             <video
@@ -99,17 +99,13 @@ function Page1View() {
 
                         {/* Right Content Column */}
                         {data.longDescription && (
-                            <div className="w-[35%] h-full flex flex-col gap-8 justify-between">
-                                <p className="text-xl leading-relaxed">{data.longDescription}</p>
+                            <div className="w-[35%] ml-10 h-full flex flex-col gap-8">
+                                <p className="leading-relaxed">{data.longDescription}</p>
 
-                                {data.listItems?.length > 0 && (
-                                    <div className="w-full">
-                                        <h2 className="text-2xl font-semibold mb-4">{data.listTitle}</h2>
-                                        <ul className="text-lg grid-cols-2 grid w-full space-y-1 list-disc list-inside">
-                                            {data.listItems.map((item, index) => (
-                                                <li className="col-span-1" key={index}>{item}</li>
-                                            ))}
-                                        </ul>
+                                {data.themeText && (
+                                    <div className="w-full ">
+                                        <h3 className=" font-semibold mb-4">{data.listTitle}</h3>
+                                        <p className=" leading-relaxed">{data.themeText}</p>
                                     </div>
                                 )}
 
@@ -119,7 +115,7 @@ function Page1View() {
                                         onClick={() => goToNextPage(item)}
                                         className="flex items-center text-center gap-4 mt-auto group cursor-pointer"
                                     >
-                                        <span className="text-3xl font-bold">{data.btnText}</span>
+                                        <p className=" font-bold">{data.btnText}</p>
                                         <div className="w-full h-full max-w-[4vw] group-hover:scale-125 transition-all duration-300 ease-in-out">
                                             <svg fill="#ffffff" version="1.1" viewBox="0 0 512 512" stroke="#ffffff">
                                                 <polygon points="512,261.5 298.7,90.8 298.7,218.8 0,218.8 0,304.2 298.7,304.2 298.7,432.2 "></polygon>
@@ -136,7 +132,7 @@ function Page1View() {
             {/* Modal Overlay */}
             {selectedTestimonial && (
                 <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex flex-col justify-center items-center text-center px-8">
-                    <div className="max-w-4xl w-full">
+                    <div className="max-w-[50dvw] w-full">
                         <video
                             src={selectedTestimonial.vidUrl}
                             controls={false}
@@ -144,15 +140,15 @@ function Page1View() {
                             muted
                             loop
                             playsInline
-                            className="w-full max-h-[60vh] mb-8 rounded-lg shadow-xl"
+                            className="w-full max-h-[50vh] mb-8 rounded-lg shadow-xl"
                         />
                         <div className="text-left text-white space-y-2 mb-10">
-                            <p className="text-xl font-semibold">{selectedTestimonial.zeyadCountry}</p>
+                            <h3 className="font-semibold">{selectedTestimonial.zeyadCountry}</h3>
                             {
-                                selectedTestimonial.title && <p className="text-lg"><strong>Course:</strong> {selectedTestimonial.title}</p>
+                                selectedTestimonial.title && <h3 className=""><strong>Course:</strong> {selectedTestimonial.title}</h3>
                             }
                             {
-                                selectedTestimonial.date && <p className="text-lg"><strong>Date:</strong> {selectedTestimonial.date}</p>
+                                selectedTestimonial.date && <h3 className=""><strong>Date:</strong> {selectedTestimonial.date}</h3>
                             }
                         </div>
 
@@ -161,8 +157,8 @@ function Page1View() {
                             onClick={() => setSelectedTestimonial(null)}
                             className="flex items-center justify-center gap-4 cursor-pointer hover:opacity-80 transition"
                         >
-                            <span className="text-2xl font-bold">Return to Testimonials</span>
-                            <svg fill="#ffffff" version="1.1" viewBox="0 0 512 512" stroke="#ffffff" className="w-8 h-8">
+                            <h3 className=" font-bold">Return to Testimonials</h3>
+                            <svg fill="#ffffff" version="1.1" viewBox="0 0 512 512" stroke="#ffffff" className="w-20 h-20">
                                 <polygon points="512,261.5 298.7,90.8 298.7,218.8 0,218.8 0,304.2 298.7,304.2 298.7,432.2 "></polygon>
                             </svg>
                         </div>

@@ -22,6 +22,7 @@ export const data = [
             "Disinformation/Misinformation",
             "Parental Control Tools"
           ],
+          themeText: "Prevention themes include: Cyber Hygiene, Cyber Interpersonal Violence, Cyberbullying, Online Grooming, Sextortion, Morphing, Digital Citizenship, Cyber Ethics, Disinformation/Misinformation, Parental Control Tools.",
           btnText: "Prevention capacity-building strategy"
         },
         page2Data: {
@@ -47,6 +48,7 @@ export const data = [
             "Cryptocurrency Tracing",
             "Cyber Patrolling"
           ],
+          themeText: "Investigation themes include: Cybercrime Trends, Forensic Imaging and Analysis, Cryptocurrency Investigation, Cryptocurrency Tracing, Digital Evidence Handling, Network Evidence and Collection, Ransomware, Cyber Patrolling.",
           btnText: "Cybercrime Investigation Strategy"
         },
         page2Data: {
@@ -74,6 +76,7 @@ export const data = [
             "OSINT Real-Life Cases",
             "Methods for Identifying Users"
           ],
+          themeText: "Digital Forensics themes include: Data Privacy, Fundamental Human Rights, Safe and Private Browsing, Internet Users and Online Actors, OSINT/SOCMINT Framework, Introduction on Search Engines, OSINT and SOCMINT, OSINT Investigations in Domains, OSINT Real-Life Cases, Methods for Identifying Users.",
           btnText: "Digital Forensics Strategy"
         },
         page2Data: {
