@@ -99,6 +99,10 @@ export const data = [
             "Training Delivery Techniques",
             "Mentoring & Reporting"
           ]
+        },
+        page2Data: {
+          title: "Training of Trainers Strategy",
+          imgUrl: "./graph1.png"
         }
       }
     ]
@@ -109,11 +113,60 @@ export const data = [
       {
         title: "Center Team",
         page1Data: {
+          hasVideoSliders: true,
           title: "Center Team",
           videoUrl: "./vid1.mp4",
           longDescription: "",
           listTitle: "",
-          listItems: []
+          listItems: [
+            {
+              "zeyadCountry": "Africa",
+              "title": "",
+              "date": "",
+              "vidUrl": "./vid1.mp4"
+            },
+            {
+              "zeyadCountry": "UNODC Mexico",
+              "title": "",
+              "date": "",
+              "vidUrl": "./vid1.mp4"
+            },
+            {
+              "zeyadCountry": "HQ",
+              "title": "",
+              "date": "",
+              "vidUrl": "./vid1.mp4"
+            },
+            {
+              "zeyadCountry": "UNODC ROCOL",
+              "title": "",
+              "date": "",
+              "vidUrl": "./vid1.mp4"
+            },
+            {
+              "zeyadCountry": "UNODC ROPAN",
+              "title": "",
+              "date": "",
+              "vidUrl": "./vid1.mp4"
+            },
+            {
+              "zeyadCountry": "UNODC ROSEAP",
+              "title": "",
+              "date": "",
+              "vidUrl": "./vid1.mp4"
+            },
+            {
+              "zeyadCountry": "UNRC3D",
+              "title": "",
+              "date": "",
+              "vidUrl": "./vid1.mp4"
+            }
+          ]
+
+        },
+        page2Data: {
+          title: "Center Team",
+          imgUrl: "./graph1.png"
         }
       },
       {
@@ -124,6 +177,10 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
+        },
+        page2Data: {
+          title: "History of the Center",
+          imgUrl: "./graph1.png"
         }
       },
       {
@@ -134,6 +191,10 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
+        },
+        page2Data: {
+          title: "Summary of 2025",
+          imgUrl: "./graph1.png"
         }
       },
       {
@@ -144,6 +205,10 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
+        },
+        page2Data: {
+          title: "Mission & Vision",
+          imgUrl: "./graph1.png"
         }
       },
       {
@@ -154,6 +219,10 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
+        },
+        page2Data: {
+          title: "ULTRA Platform",
+          imgUrl: "./graph1.png"
         }
       },
       {
@@ -166,60 +235,70 @@ export const data = [
           listTitle: "",
           listItems: [
             {
-              zeyadCountry: "Mozambique",
-              title: "Cybercrime Card Title",
-              date: "25 June",
-              vidUrl: "./vid1.mp4"
+              "zeyadCountry": "Mozambique",
+              "title": "Cybercrime Card Title",
+              "date": "25 June",
+              "vidUrl": "./vid1.mp4"
             },
             {
-              zeyadCountry: "Palestine",
-              title: "Cybercrime Investigation",
-              date: "August 2025",
-              vidUrl: "./vid1.mp4"
+              "zeyadCountry": "Palestine",
+              "title": "Cybercrime Investigation",
+              "date": "August 2025",
+              "vidUrl": "./vid1.mp4"
             },
             {
-              zeyadCountry: "Ukraine",
-              title: "Cybercrime Prevention",
-              date: "September 2025",
-              vidUrl: "./vid1.mp4"
+              "zeyadCountry": "Ukraine, Jordan, Morocco, Tunisia",
+              "title": "Cybercrime Prevention",
+              "date": "September 2025",
+              "vidUrl": "./vid1.mp4"
             },
             {
-              zeyadCountry: "Jordan",
-              title: "Cybercrime Prevention",
-              date: "September 2025",
-              vidUrl: "./vid1.mp4"
+              "zeyadCountry": "Nigeria, Jordan",
+              "title": "Cybercrime Investigation",
+              "date": "June 2025",
+              "vidUrl": "./vid1.mp4"
             },
             {
-              zeyadCountry: "Morocco",
-              title: "Cybercrime Prevention",
-              date: "September 2025",
-              vidUrl: "./vid1.mp4"
+              "zeyadCountry": "Laos, Malaysia, Philippines",
+              "title": "Training of Trainers",
+              "date": "December 2024",
+              "vidUrl": "./vid1.mp4"
             },
             {
-              zeyadCountry: "Tunisia",
-              title: "Cybercrime Prevention",
-              date: "September 2025",
-              vidUrl: "./vid1.mp4"
+              "zeyadCountry": "Egypt, Qatar",
+              "title": "Training of Trainers",
+              "date": "April 2025",
+              "vidUrl": "./vid1.mp4"
             },
             {
-              zeyadCountry: "Nigeria",
-              title: "Cybercrime Investigation",
-              date: "June 2025",
-              vidUrl: "./vid1.mp4"
+              "zeyadCountry": "Yemen, Sudan, Somalia, Iraq, League of Arab States",
+              "title": "Combating Online Exploitation in Conflict Zones",
+              "date": "February 2025",
+              "vidUrl": "./vid1.mp4"
             },
             {
-              zeyadCountry: "Jordan",
-              title: "Cybercrime Investigation",
-              date: "June 2025",
-              vidUrl: "./vid1.mp4"
+              "zeyadCountry": "Armenia",
+              "title": "Cybercrime Prevention",
+              "date": "February 2025",
+              "vidUrl": "./vid1.mp4"
             },
             {
-              zeyadCountry: "Laos",
-              title: "Training of Trainers",
-              date: "December 2024",
-              vidUrl: "./vid1.mp4"
+              "zeyadCountry": "Palestine",
+              "title": "Cybercrime Prevention",
+              "date": "August 2025",
+              "vidUrl": "./vid1.mp4"
+            },
+            {
+              "zeyadCountry": "Mozambique",
+              "title": "Cryptocurrency Investigation",
+              "date": "August 2025",
+              "vidUrl": "./vid1.mp4"
             }
           ]
+        },
+        page2Data: {
+          title: "Participants Testimonials",
+          imgUrl: "./graph1.png"
         }
       },
       {
@@ -230,6 +309,10 @@ export const data = [
           longDescription: "",
           listTitle: "",
           listItems: []
+        },
+        page2Data: {
+          title: "Contact Information",
+          imgUrl: "./graph1.png"
         }
       }
     ]

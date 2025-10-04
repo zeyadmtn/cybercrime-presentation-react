@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'LeagueSpartan';
+  src: url('../public/LeagueSpartan-Bold.ttf') format('opentype');
+  font-weight: 700;
+  font-style: bold;
+}
+@font-face {
+  font-family: 'LeagueSpartan';
+  src: url('../public/LeagueSpartan-Regular.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Norwester';
+  src: url('../public/norwester.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-sans: 'LeagueSpartan', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1 {
+    font-size: clamp(1.5rem, 7vw, 7rem); 
+}
+h2 {
+    font-size: clamp(1.25rem, 6vw, 5rem);
+}
+h3 {
+    font-size: clamp(1.125rem, 6vw, 4rem);
+}

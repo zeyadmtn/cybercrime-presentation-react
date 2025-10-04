@@ -55,7 +55,7 @@ function Page1View() {
 
                 {/* Testimonial View */}
                 {data.hasVideoSliders ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                    <div className={`${data.listItems.length < 8 ? 'lg:grid-cols-4' : ' lg:grid-cols-5'} grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5`}>
                         {data.listItems.map((testimonial, index) => (
                             <div
                                 key={index}
@@ -72,12 +72,12 @@ function Page1View() {
                                     loop
                                 />
                                 <p className="font-semibold text-lg">{testimonial.zeyadCountry}</p>
-                                <p className="text-sm">
-                                    <strong>Course:</strong> {testimonial.title}
-                                </p>
-                                <p className="text-sm">
-                                    <strong>Date:</strong> {testimonial.date}
-                                </p>
+                                {
+                                    testimonial.title && <p className="text-sm"><strong>Course:</strong> {testimonial.title}</p>
+                                }
+                                {
+                                    testimonial.date && <p className="text-sm"><strong>Date:</strong> {testimonial.date}</p>
+                                }
                             </div>
                         ))}
                     </div>
@@ -148,12 +148,12 @@ function Page1View() {
                         />
                         <div className="text-left text-white space-y-2 mb-10">
                             <p className="text-xl font-semibold">{selectedTestimonial.zeyadCountry}</p>
-                            <p className="text-lg">
-                                <strong>Course:</strong> {selectedTestimonial.title}
-                            </p>
-                            <p className="text-lg">
-                                <strong>Date:</strong> {selectedTestimonial.date}
-                            </p>
+                            {
+                                selectedTestimonial.title && <p className="text-lg"><strong>Course:</strong> {selectedTestimonial.title}</p>
+                            }
+                            {
+                                selectedTestimonial.date && <p className="text-lg"><strong>Date:</strong> {selectedTestimonial.date}</p>
+                            }
                         </div>
 
                         {/* Close Modal Button */}
