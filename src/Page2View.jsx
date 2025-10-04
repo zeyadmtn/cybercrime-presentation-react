@@ -39,14 +39,14 @@ function Page2View() {
             <div
                 id="content"
                 ref={contentRef}
-                className="flex flex-col max-w-[60dvw] mx-auto w-fit rounded-lg "
+                className="flex flex-col max-w-[80dvw] w-full mx-auto rounded-lg "
             >
-                <h1 className="text-5xl font-semibold text-center mb-16">{item.title}</h1>
-                <h2 className="text-4xl font-semibold text-center mb-10">{data.title}</h2>
+                <h1 className="font-semibold text-center mb-16">{item.title}</h1>
+                <h2 className=" font-semibold text-center mb-10">{data.title}</h2>
                 <img
                     src={data.imgUrl}
                     alt=""
-                    className="max-h-[60dvh] w-fit object-contain mx-auto"
+                    className="max-h-[90dvh] w-full object-contain mx-auto"
                 />
             </div>
         </main>
